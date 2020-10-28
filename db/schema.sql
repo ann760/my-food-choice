@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS mfcData_db;
+
+CREATE DATABASE mfcData_db;

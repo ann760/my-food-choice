@@ -1,0 +1,31 @@
+{
+  "name": "ucb-my-food-choices",
+  "version": "1.0.0",
+  "description": "Food choices for the events",
+  "main": "server.js",
+  "scripts": {
+    "test": "jest",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ahmadelgamal/ucb-my-food-choices.git"
+  },
+  "author": "Ann-Marie Orozco, Ahmad El Gamal, Brian Lopez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ahmadelgamal/ucb-my-food-choices/issues"
+  },
+  "homepage": "https://github.com/ahmadelgamal/ucb-my-food-choices#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "connect-session-sequelize": "^7.0.4",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.2.0",
+    "express-session": "^1.17.1",
+    "jest": "^26.6.1",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.3.5"
+  }
+}
