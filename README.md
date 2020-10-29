@@ -123,13 +123,12 @@ This app is group 1's project 2 at the University of California, Berkeley (UCB),
 - MySQL
 - Heroku
 - _one new library, package, or technology that we haven’t discussed_
-- Authentication (Cookies and Express session)
 
 ## Installation
-To run this program you will need to run the commands
-init npm
-and 
-npm install bcrypt connect-session-sequelize dotenv express express-handlebars express-session jest mysql2 sequelize
+To run this program you will need to run the commands <br />
+`npm init` <br />
+and <br />
+`npm install bcrypt connect-session-sequelize dotenv express express-handlebars express-session jest mysql2 sequelize`
 
 ## License
 
