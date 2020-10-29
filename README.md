@@ -24,11 +24,11 @@ It has an interface for users to enter their dietary choices, and another for ev
 
 ## Deployment URL
 
-https://ahmadelgamal.github.io/ucb-my-food-choices/
+
 
 ## GitHub Repo URL
 
-https://github.com/ahmadelgamal/ucb-my-food-choices
+https://github.com/ann760/my-food-choice
 
 ## Usage
 
@@ -111,17 +111,19 @@ This app is group 1's project 2 at the University of California, Berkeley (UCB),
 - CSS3
 - JavaScript
 - Node.js
-- Express.js
-- RESTful API
-- Handlebars.js
+- express 4.17.1
+- bcrypt 5.0.0
+- connect-session-sequelize 7.0.4
+- dotenv 2.0 
+- express-handlebars 5.2.0
+- express-session 1.17.1
+- jest 26.6.1
+- mysql2 2.2.5
+- sequelize (ORM) 6.3.5
 - MySQL
-- Sequelize ORM
-- GET and POST routes
 - Heroku
 - _one new library, package, or technology that we haven’t discussed_
-- MVC Paradigm folder structure
 - Authentication (Cookies and Express session)
-- Protected API keys and sensitive information using environment variables
 
 ## Installation
 To run this program you will need to run the commands

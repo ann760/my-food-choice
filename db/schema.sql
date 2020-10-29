@@ -1,3 +1,3 @@
-DROP DATABASE IF EXISTS mfcData_db;
+DROP DATABASE IF EXISTS event_manager_db;
 
-CREATE DATABASE mfcData_db;
+CREATE DATABASE event_manager_db;
