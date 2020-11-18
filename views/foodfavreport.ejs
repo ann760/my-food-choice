@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<%- include('./partials/head.ejs') %>
+
+<body>
+    <%- include('./partials/header.ejs') %>
+    <main>
+        <!-- MATERIALIZE: The `for` attribute is necessary to bind our custom checkbox with the input.
+              Add the input's `id` as the value of the for attribute of the label. -->
+
+        <div class="container">
+            <h1>Favorite Food Report</h1>
+            <h3>Bootcamp Inc.</h3>
+            <p>
+                As of, <%= new Date().toLocaleDateString(); %>, <span id="guestCount"></span> guests replied with the
+                following:
+            </p>
+            <div>
+                <a id="filter-by-dropdown" class="btn dropdown-trigger blue darken-2" href="#!"
+                    data-target="report-filter-dropdown">Filter By<i
+                        class="material-icons right">arrow_drop_down</i></a>
+                <ul id="report-filter-dropdown" class="dropdown-content">
+                    <li><a id="filter-all" class="blue-text text-darken-3" href="#!">All</a></li>
+                    <li class="divider"></li>
+                    <li><a id="filter-entree" class="blue-text text-darken-3" href="#!">Entree</a></li>
+                    <li><a id="filter-sides" class="blue-text text-darken-3" href="#!">Sides</a></li>
+                    <li><a id="filter-dessert" class="blue-text text-darken-3" href="#!">Dessert</a></li>
+                    <li><a id="filter-beverages" class="blue-text text-darken-3" href="#!">Beverages</a></li>
+                </ul>
+            </div>
+
+            <div class="row" id="entree-filter">
+                <h3 id="entree">Entree</h3>
+                <table class="striped" id="entree-table">
+                    <thead>
+                        <tr>
+                            <th class="col1">Entree</th>
+                            <th class="col2">No. of Guests</th>
+                        </tr>
+                    </thead>
+
+                </table>
+            </div>
+            <div class="row" id="sides-filter">
+                <h3 id="sides">Sides</h3>
+                <table class="striped" id="sides-table">
+                    <thead>
+                        <tr>
+                            <th class="col1">Sides</th>
+                            <th class="col2">No. of Guests</th>
+                        </tr>
+                    </thead>
+
+                </table>
+            </div>
+            <div class="row" id="dessert-filter">
+                <h3 id="dessert">Dessert</h3>
+                <table class="striped" id="dessert-table">
+                    <thead>
+                        <tr>
+                            <th class="col1">Dessert</th>
+                            <th class="col2">No. of Guests</th>
+                        </tr>
+                    </thead>
+                    <tbody class="foodNameDessert">
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="row" id="beverage-filter">
+                <h3 id="beverage">Beverage</h3>
+                <table class="striped" id="beverage-table">
+                    <thead>
+                        <tr>
+                            <th class="col1">Beverage</th>
+                            <th class="col2">No. of Guests</th>
+                        </tr>
+                    </thead>
+                    <tbody class="foodNameBeverage">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="container center-align">
+            <ul class="pagination">
+                <li class="disabled"><a href="/reports"><i class="material-icons">chevron_left</i></a></li>
+                <li class="waves-effect"><a href="/reports">1</a></li>
+                <li class="active"><a href="#!">2</a></li>
+                <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+            </ul>
+        </div>
+    </main>
+    <%- include('./partials/footer.ejs') %>
+    <script src="./js/favFoodReport.js"></script>
+    <script src="./js/admin-logout.js"></script>
+</body>
+
+</html>

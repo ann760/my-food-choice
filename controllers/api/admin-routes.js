@@ -1,7 +1,6 @@
-
 const router = require("express").Router();
 const sequelize = require("../../config/connection");
-const { User, Restriction, Profile } = require("../../models");
+const { User, Restriction, Profile, Admin } = require("../../models");
 
 // GET all users /api/users
 router.get("/", (req, res) => {
@@ -60,78 +59,20 @@ router.get("/restriction", (req, res) => {
     });
 });
 
-// GET one user /api/users/1
-router.get("/:id", (req, res) => {
-  console.log("=========GET=USER=ID========");
-  User.findOne({
-    attributes: { exclude: ["password"] },
-    where: {
-      id: req.params.id,
-    },
-    include: [
-      {
-        model: Profile,
-        attributes: ["id", "user_id", "restriction_id"],
-        include: {
-          model: Restriction,
-          attributes: ["restriction_name"],
-        },
-      }
-    ],
-  })
-    .then((dbUserData) => {
-      if (!dbUserData) {
-        res.status(404).json({ message: "No user found with this id" });
-        return;
-      }
-      res.json(dbUserData);
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(303).json(err);
-    });
-});
-
-// POST create new user /api/users
-router.post("/", (req, res) => {
-  console.log("========CREATE=USER========");
-  // expects {first_name: 'User', last_name: Smith, email: 'user@email.com', password: '1234'}
-  User.create({
-    first_name: req.body.first_name,
-    last_name: req.body.last_name,
-    email: req.body.email,
-    password: req.body.password,
-  })
-    .then((dbUserData) => {
-      req.session.save(() => {
-        req.session.user_id = dbUserData.id;
-        req.session.username = dbUserData.username;
-        req.session.first_name = dbUserData.first_name;
-        req.session.guestLoggedIn = true;
-
-        res.json(dbUserData);
-      });
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(303).json(err);
-    });
-});
-
 // login as a user /api/users/login
-router.post("/login", (req, res) => {
+router.post("/admin-login", (req, res) => {
   console.log("=========LOGIN=route========");
-  User.findOne({
+  Admin.findOne({
     where: {
       email: req.body.email,
     },
-  }).then((dbUserData) => {
-    if (!dbUserData) {
+  }).then((dbAdminData) => {
+    if (!dbAdminData) {
       res.status(400).json({ message: "No user found with that email address!" });
       return;
     }
 
-    const validPassword = dbUserData.checkPassword(req.body.password);
+    const validPassword = dbAdminData.checkPassword(req.body.password);
 
     if (!validPassword) {
       res.status(400).json({ message: "Incorrect password!" });
@@ -140,20 +81,20 @@ router.post("/login", (req, res) => {
 
     req.session.save(() => {
       // declare session variables
-      req.session.user_id = dbUserData.id;
-      req.session.username = dbUserData.username;
-      req.session.first_name = dbUserData.first_name;
-      req.session.guestLoggedIn = true;
+      req.session.user_id = dbAdminData.id;
+      req.session.username = dbAdminData.username;
+      req.session.first_name = dbAdminData.first_name;
+      req.session.hostLoggedIn = true;
 
-      res.json({ user: dbUserData, message: "You are now logged in!" });
+      res.json({ user: dbAdminData, message: "You are now logged in!" });
     });
   });
 });
 
 // logout as a user /api/users/logout
-router.post('/logout', (req, res) => {
+router.post('/admin-logout', (req, res) => {
   console.log("=========LOGOUT=========");
-  if (req.session.guestLoggedIn) {
+  if (req.session.hostLoggedIn) {
     res.clearCookie('connect.sid').status(200).send('OK');
     req.session.destroy(() => {
       res.status(204).end();
@@ -164,22 +105,48 @@ router.post('/logout', (req, res) => {
   }
 });
 
+//POST create new user /api/users
+router.post("/", (req, res) => {
+  console.log("========CREATE=USER========");
+  // expects {first_name: 'User', last_name: Smith, email: 'user@email.com', password: '1234'}
+  Admin.create({
+    first_name: req.body.first_name,
+    last_name: req.body.last_name,
+    email: req.body.email,
+    password: req.body.password,
+  })
+    .then((dbAdminData) => {
+      req.session.save(() => {
+        req.session.user_id = dbAdminData.id;
+        req.session.username = dbAdminData.username;
+        req.session.first_name = dbAdminData.first_name;
+        req.session.hostLoggedIn = true;
+
+        res.json(dbAdminData);
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(303).json(err);
+    });
+});
+
 // PUT update a user /api/users/1
 router.put("/:id", (req, res) => {
-  console.log("=========UPDATE=USER=ID========");
+  console.log("=========UPDATE=Admin========");
   // expects {first_name: 'User, last_name: Last, email: 'user@email.com', password: '1234'}
-  User.update(req.body, {
+  Admin.update(req.body, {
     individualHooks: true,
     where: {
       id: req.params.id,
     },
   })
-    .then((dbUserData) => {
-      if (!dbUserData[0]) {
+    .then((dbAdminData) => {
+      if (!dbAdminData[0]) {
         res.status(404).json({ message: "No user found with this id" });
         return;
       }
-      res.json(dbUserData);
+      res.json(dbAdminData);
     })
     .catch((err) => {
       console.log(err);
@@ -189,24 +156,24 @@ router.put("/:id", (req, res) => {
 
 // DELETE delete a user /api/users/1
 router.delete("/:id", (req, res) => {
-  console.log("=========DELETE=USER========");
-  console.log(typeof(req.params.id));
-  User.destroy({
+  console.log("=========DELETE=ADMIN========");
+  Admin.destroy({
     where: {
-      id: parseInt(req.params.id),
+      id: req.params.id,
     },
   })
-    .then((dbUserData) => {
-      if (!dbUserData) {
+    .then((dbAdminData) => {
+      if (!dbAdminData) {
         res.status(404).json({ message: "No user found with this id" });
         return;
       }
-      res.json(dbUserData);
+      res.json(dbAdminData);
     })
     .catch((err) => {
       console.log(err);
       res.status(303).json(err);
     });
 });
+
 
 module.exports = router;

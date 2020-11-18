@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <%- include('./partials/head.ejs') %>
+  <body>
+    <%- include('./partials/header.ejs') %>
+    <main>
+      <div class="container">
+        <div class="row">
+          <h1>Login</h1>
+          <form class="login-form col s12" action="/" method="GET">
+          <div class="row">
+            <div class="input-field col s12 hoverable">
+              <i class="material-icons prefix">email</i>
+              <input id="email" type="email" autocomplete="email" class="validate" />
+              <label for="email">Email</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12 hoverable">
+              <i class="material-icons prefix">security</i>
+              <input id="password" type="password" autocomplete="current-password" class="validate" />
+              <label for="password">Password</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12">
+              <div class="row">
+                <div class="col s6 m5 l4">
+                  <p>
+                    <label>
+                      <input id="guest-login" class="with-gap" name="user-type" type="radio" checked />
+                      <span>Guest</span>
+                    </label>
+                  </p>
+                  <p>
+                    <label>
+                      <input id="host-login" class="with-gap" name="user-type" type="radio" />
+                      <span>Host</span>
+                    </label>
+                  </p>
+                </div>
+                <div class="col m3 l5"></div>
+                <div class="col s6 m4 l3">
+                  <button
+                    id="login-btn"
+                    class="btn btn-large waves-effect waves-light green hoverable right"
+                    type="submit"
+                    value="accept"
+                  >
+                    Login
+                    <i class="material-icons right">send</i>
+                  </button>
+                </div>
+              </div>
+            <div class="row">
+              <p class="center-align">
+                Not a member? <a href="/signup">Sign Up</a>
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <%- include('./partials/footer.ejs') %>
+    <script src="./js/login.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <%- include('./partials/head.ejs') %>
+  <body>
+    <%- include('./partials/header.ejs') %>
+    <main>
+      <!-- MATERIALIZE: The `for` attribute is necessary to bind our custom checkbox with the input.
+              Add the input's `id` as the value of the for attribute of the label. -->
+            <form class="profile-form" action="/" method="GET">
+                <div class="container">
+                <h1>Dietary Restrictions</h1>
+                <h5>Select your Dietary Restrictions</h5>
+                <h3>Allergies</h3>
+                <% for(var i=0; i< restriction_data.length ; i++) { %>    
+                    <%if (restriction_data[i].category === 'Allergies') { %> 
+                         <p>
+                    
+                            <label>
+                                 <input type="checkbox" id='' value = "<%=i+1%>" name='restriction'/>
+                                 <span><%= restriction_data[i].restriction_name%></span>
+                            </label>  
+                        </p>
+                    <% } %>  
+                <% }%>  
+                </div>
+        
+                <div class="container">
+                <h3>Medical</h3>
+                <% for(var i=0; i< restriction_data.length ; i++) { %>    
+                    <%if (restriction_data[i].category === 'Medical') { %> 
+                         <p>
+                    
+                            <label>
+                                 <input type="checkbox" id='' value = "<%=i+1%>" name='restriction'/>
+                                 <span><%= restriction_data[i].restriction_name%></span>
+                            </label>  
+                        </p>
+                    <% } %>  
+                <% }%>  
+                </div>
+        
+                <div class="container">
+                <h3>Religious</h3>
+                <% for(var i=0; i< restriction_data.length ; i++) { %>    
+                    <%if (restriction_data[i].category === 'Religious') { %> 
+                         <p>
+                    
+                            <label>
+                                 <input type="checkbox" id='' value = "<%=i+1%>" name='restriction'/>
+                                 <span><%= restriction_data[i].restriction_name%></span>
+                            </label>  
+                        </p>
+                    <% } %>  
+                <% }%>  
+                </div>
+        
+                <div class="container">
+                <h3>Substance</h3>
+                <% for(var i=0; i< restriction_data.length ; i++) { %>    
+                    <%if (restriction_data[i].category === 'Substance') { %> 
+                         <p>
+                    
+                            <label>
+                                 <input type="checkbox" id='' value = "<%=i+1%>" name='restriction'/>
+                                 <span><%= restriction_data[i].restriction_name%></span>
+                            </label>  
+                        </p>
+                    <% } %>  
+                <% }%>  
+                </div>
+        
+                <div class="container">
+                <h3>Weight Management</h3>
+                <% for(var i=0; i< restriction_data.length ; i++) { %>    
+                    <%if (restriction_data[i].category === 'Weight Management') { %> 
+                         <p>
+                    
+                            <label>
+                                 <input type="checkbox" id='' value = "<%=i+1%>" name='restriction'/>
+                                 <span><%= restriction_data[i].restriction_name%></span>
+                            </label>  
+                        </p>
+                    <% } %>  
+                <% }%>  
+                </div>
+        
+                <div class="container">
+                <h3>Other</h3>
+                <% for(var i=0; i< restriction_data.length ; i++) { %>    
+                    <%if (restriction_data[i].category === 'Other') { %> 
+                         <p>
+                    
+                            <label>
+                                 <input type="checkbox" id='' value = "<%=i+1%>" name='restriction'/>
+                                 <span><%= restriction_data[i].restriction_name%></span>
+                            </label>  
+                        </p>
+                    <% } %>  
+                <% }%>  
+                </div>
+                
+                <div class="container center-align">
+                    <ul class="pagination">
+                        <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+                        <li class="active"><a href="#!">1</a></li>
+                        <li class="waves-effect"><a href="/favorite">2</a></li>
+                        <li class="waves-effect"><a href="/favorite"><i class="material-icons">chevron_right</i></a></li>
+                      </ul>
+                </div> 
+        
+                <div class="container center-align">
+                    <button
+                        class="btn waves-effect waves-light btn-large green"
+                        type="submit"
+                        >
+                        Update Profile!
+                        <i class="material-icons right">save</i>
+                    </button>
+                </div>
+            </form>
+        </main>
+        <%- include('./partials/footer.ejs') %>
+        <script src="./js/profile.js"></script>
+        <script src="./js/logout.js"></script>
+    </body>
+</html>

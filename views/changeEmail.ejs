@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <%- include('./partials/head.ejs') %>
+  <body>
+    <%- include('./partials/header.ejs') %>
+    <main>
+      <div class="container">
+        <div class="row">
+          <h1>Change Email</h1>
+          
+          <form class="change-email-form col s12" action="/" method="GET">
+            <div class="row">
+              <div class="input-field col s12 hoverable">
+                <i class="material-icons prefix">email</i>
+                <input id="current-email" type="email" autocomplete="email" class="validate" name = "<%= user_id %>" data-loggedin = "<%= loggedIn%>" />
+                <label for="current-email">Current Email</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12 hoverable">
+                <i class="material-icons prefix">email</i>
+                <input id="new-email" type="email" autocomplete="email" class="validate" />
+                <label for="new-email">New Email</label>
+              </div>
+            </div>
+            <div class="col s5 m4 l3">
+            <button
+                id="changeemail-btn"
+                class="btn btn-large waves-effect waves-light <%= color %> hoverable"
+                type="submit"
+                value="accept"
+              >
+                Submit
+                <i class="material-icons right">send</i>
+              </button>
+            </div>
+            </div>
+            
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <%- include('./partials/footer.ejs') %>
+    <script src="./js/logout.js"></script>
+    <script src="./js/changeEmail.js"> </script>
+  </body>
+</html>

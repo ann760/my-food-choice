@@ -1,0 +1,75 @@
+<header>
+  <ul id="account-dropdown" class="dropdown-content">
+  <% if (title !== "Sign Up" && title !== "Login") { %>
+    <!-- <li><a href="/change-email" class="<%= color %>-text">Change Email</a></li> -->
+    <li><a href="/change-pw" data-constrainwidth="false" class="<%= color %>-text">Change Password</a></li>
+    <li><a href="" class="<%= color %>-text" id="deleteAcc" data-account='<%= user_id%>'>Delete Account</a></li>
+    <li class="divider"></li>
+  <% } %>
+    <li><a class="<%= color %>-text" id='<%= navLinkId %>' href='/<%= navLinkRoute %>'><%= navLinkText%></a></li>
+  </ul>
+  
+  <nav class="<%= color %>">
+    <div class="container nav-wrapper">
+      <a href="/" class="brand-logo hide-on-med-and-down">
+        <i class="material-icons">local_dining</i>My Food Choices
+      </a>
+      <a href='/' class="brand-logo hide-on-large-only">
+          <i class="material-icons">local_dining</i>MFC
+      </a>
+      <a href='/' data-target="mobile-nav" class="sidenav-trigger">
+        <i class="material-icons">menu</i>
+      </a>
+        
+      <ul class="right hide-on-med-and-down">
+      <% if (title !== "Sign Up" && title !== "Login") { %>
+        <li>Welcome, <%= first_name %></li>
+        <% if (loggedIn === 'hostLoggedIn') { %>
+          <li><a href="/reports">Restrictions</a></li>
+          <li><a href="/foodfav-reports">Favorites</a></li>
+        <% } else if (loggedIn === 'guestLoggedIn') { %>
+          <li><a href="/profile">Restrictions</a></li>
+          <li><a href="/favorite">Favorites</a></li>
+        <% } %>
+          <li><a id="profile-dropdown" class="dropdown-trigger" href="#!" data-target="account-dropdown"><i class="material-icons right">person</i></a></li>
+      <% } else { %>
+        <li><a id='<%= navLinkId %>' href='/<%= navLinkRoute %>'><%= navLinkText%></a></li>
+      <% } %>
+      </ul>
+    </div>
+  </nav>
+  
+  <ul class="sidenav" id="mobile-nav">
+    <% if (title !== "Sign Up" && title !== "Login") { %>
+      <li><a>Welcome, <%= first_name %></a></li>
+      <li class="divider"></li>
+      
+      <% if (loggedIn === 'hostLoggedIn') { %>
+        <li><a href="/reports">Restrictions Report</a></li>
+        <li><a href="/foodfav-reports">Favorites Report</a></li>
+      <% } else if (loggedIn === 'guestLoggedIn') { %>
+        <li><a href="/profile">Dietary Restrictions</a></li>
+        <li><a href="/favorite">Food Favorites</a></li>
+      <% } %>
+        <li class="divider"></li>
+        <!-- <li><a href="/change-email">Change Email</a></li> -->
+        <li><a href="/change-pw">Change Password</a></li>
+        <li><a href="" id="burgerDeleteAcc" data-account='<%= user_id%>'>Delete Account</a></li>
+        <li class="divider"></li>
+    <% } %>
+      <li><a id='<%= burgerNavLinkId %>' href='/<%= navLinkRoute %>'><%= navLinkText%></a></li>
+  </ul>
+  
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Confirm Delete</h4>
+      <p>Are You sure you want to delete your account?</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat" id="close">Cancel</a>
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat" id="delete">Ok</a>
+    </div>
+  </div>
+</header>

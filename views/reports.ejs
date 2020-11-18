@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <%- include('./partials/head.ejs') %>
+  <body>
+    <%- include('./partials/header.ejs') %>
+    <main>
+      <div class="container">
+        <h1>Dietary Restrictions Reports</h1>
+
+        <h3>Bootcamp Inc.</h3>
+        <p>
+          As of, <%= new Date().toLocaleDateString(); %>, <span id="guestRestrictCount"></span> guests replied with the
+          following:
+        </p>
+
+        <!-- Dropdown Trigger -->
+        <a
+          id="filter-by-dropdown"
+          class="btn dropdown-trigger blue darken-2"
+          href="#!"
+          data-target="report-filter-dropdown"
+          >Filter By<i class="material-icons right">arrow_drop_down</i></a
+        >
+        <!-- Dropdown Structure -->
+        <ul id="report-filter-dropdown" class="dropdown-content">
+          <li><a id="filter-all" class="blue-text text-darken-3" href="#!">All</a></li>
+          <li class="divider"></li>
+          <li><a id="filter-allergies" class="blue-text text-darken-3" href="#!">Allergies</a></li>
+          <li><a id="filter-medical" class="blue-text text-darken-3" href="#!">Medical</a></li>
+          <li><a id="filter-religious" class="blue-text text-darken-3" href="#!">Religious</a></li>
+          <li><a id="filter-substance" class="blue-text text-darken-3" href="#!">Substance</a></li>
+          <li>
+            <a id="filter-weight" class="blue-text text-darken-3" href="#!">Weight Management</a>
+          </li>
+          <li><a id="filter-other" class="blue-text text-darken-3" href="#!">Other</a></li>
+        </ul>
+
+        <div class="row" id="allergies">
+        <h3 id="allergies-heading"></h3>
+        <table class="striped" id="allergy-table">
+          <thead>
+            <tr>
+              <th class="col1">Allergy</th>
+              <th class="col2">No. of Guests</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+
+      <div class="row" id="medical" >
+        <h3 id="medical-heading"></h3>
+        <table class="striped" id="medical-table">
+          <thead>
+            <tr>
+              <th class="col1">Medical Restriction</th>
+              <th class="col2">No. of Guests</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+
+      <div class="row" id="religious">
+        <h3 id="religious-heading"></h3>
+        <table class="striped" id="religious-table">
+          <thead>
+            <tr>
+              <th class="col1">Religion</th>
+              <th class="col2">No. of Guests</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+
+      <div class="row" id="substance">
+        <h3 id="substance-heading"></h3>
+        <table class="striped" id="substance-table">
+          <thead>
+            <tr>
+              <th class="col1">Substance</th>
+              <th class="col2">No. of Guests</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+
+      <div class="row" id="weight">
+        <h3 id="weight-heading"></h3>
+        <table class="striped" id="weight-table">
+          <thead>
+            <tr>
+              <th class="col1">Diet</th>
+              <th class="col2">No. of Guests</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+
+      <div class="row" id="other">
+        <h3 id="other-heading"></h3>
+        <table class="striped" id="other-table">
+          <thead>
+            <tr>
+              <th class="col1">Restriction</th>
+              <th class="col2">No. of Guests</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+      </div>
+      <div class="container center-align">
+        <ul class="pagination">
+            <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+            <li class="active"><a href="#!">1</a></li>
+            <li class="waves-effect"><a href="/foodfav-reports">2</a></li>
+            <li class="waves-effect"><a href="/foodfav-reports"><i class="material-icons">chevron_right</i></a></li>
+          </ul>
+      </div> 
+    </main>
+
+    <%- include('./partials/footer.ejs') %>
+    <script src="./js/reports.js"></script>
+    <script src="./js/admin-logout.js"></script>
+  </body>
+</html>

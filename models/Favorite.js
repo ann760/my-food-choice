@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
-class Restriction extends Model {}
+class Favorite extends Model {}
 
-Restriction.init(
+Favorite.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -11,11 +11,11 @@ Restriction.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    restriction_name: {
+    food_name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    category: {
+    food_category: {
       type: DataTypes.STRING,
       allowNull: false,
     }
@@ -24,8 +24,8 @@ Restriction.init(
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: "restriction",
+    modelName: "favorite",
   }
 );
 
-module.exports = Restriction;
+module.exports = Favorite;

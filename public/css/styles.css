@@ -1,0 +1,45 @@
+#login-btn {
+  margin-top: 20px;
+}
+
+#signup-btn {
+  margin-top: 10px;
+}
+
+#account-dropdown {
+  top: -40px;
+}
+
+/* Begins custom code to make radio selector color green darken-3 */
+[type="radio"]:checked + span:after,
+[type="radio"].with-gap:checked + span:before,
+[type="radio"].with-gap:checked + span:after {
+  border: 2px solid #2e7d32;
+}
+ 
+[type="radio"]:checked + span:after,
+[type="radio"].with-gap:checked + span:after {
+  background-color: #2e7d32;
+}
+/* Ends custom code to make radio selector color green darken-3 */
+
+/* Custom code to make material icons color green darken-3 */
+.material-icons.active {
+  color: #2e7d32 !important;
+}
+
+.col1 {
+  width: 70%;
+}
+
+.col2 {
+  width: 30%;
+}
+
+footer {
+  margin-top: 20px;
+}
+
+.page-footer {
+  padding-top: 0;
+}

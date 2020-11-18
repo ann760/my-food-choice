@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <%- include('./partials/head.ejs') %>
+  <body>
+    <%- include('./partials/header.ejs') %>
+    <main>
+      <!-- MATERIALIZE: The `for` attribute is necessary to bind our custom checkbox with the input.
+              Add the input's `id` as the value of the for attribute of the label. -->
+            
+            <form class="userfav-form" action="/" method="GET">
+                <div class="container">
+                <h1>Food Favorites</h1>
+                <h5>Select your Favorite foods</h5>
+
+                <h3>Entrees</h3>
+                <% for(var i=0; i< favorite_data.length ; i++) { %>    
+                    <%if (favorite_data[i].food_category === 'Entree') { %> 
+                         <p>
+                    
+                            <label>
+                                 <input type="checkbox" id='' value = "<%=i+1%>" name='favorite'/>
+                                 <span><%= favorite_data[i].food_name%></span>
+                            </label>  
+                        </p>
+                    <% } %>  
+                <% }%>  
+                </div>
+                <div class="container">
+                    <h3>Sides</h3>
+                    <% for(var i=0; i< favorite_data.length ; i++) { %>    
+                        <%if (favorite_data[i].food_category === 'Sides') { %> 
+                             <p>
+                        
+                                <label>
+                                     <input type="checkbox" id='' value = "<%=i+1%>" name='favorite'/>
+                                     <span><%= favorite_data[i].food_name%></span>
+                                </label>  
+                            </p>
+                        <% } %>  
+                    <% }%>  
+                </div>
+                <div class="container">
+                    <h3>Desserts</h3>
+                    <% for(var i=0; i< favorite_data.length ; i++) { %>    
+                        <%if (favorite_data[i].food_category === 'Dessert') { %> 
+                             <p>
+                        
+                                <label>
+                                     <input type="checkbox" id='' value = "<%=i+1%>" name='favorite'/>
+                                     <span><%= favorite_data[i].food_name%></span>
+                                </label>  
+                            </p>
+                        <% } %>  
+                    <% }%>  
+                </div>
+                <div class="container">
+                    <h3>Beverages</h3>
+                    <% for(var i=0; i< favorite_data.length ; i++) { %>    
+                        <%if (favorite_data[i].food_category === 'Beverage') { %> 
+                             <p>
+                        
+                                <label>
+                                     <input type="checkbox" id='' value = "<%=i+1%>" name='favorite'/>
+                                     <span><%= favorite_data[i].food_name%></span>
+                                </label>  
+                            </p>
+                        <% } %>  
+                    <% }%>  
+                </div>
+                <div class="container center-align">
+                    <ul class="pagination">
+                        <li class="waves-effect"><a href="/profile"><i class="material-icons">chevron_left</i></a></li>
+                        <li class="waves-effect"><a href="/profile">1</a></li>
+                        <li class="active"><a href="#!">2</a></li>
+                        <li class="disabled"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+                      </ul>
+                </div> 
+                <div class="container center-align">
+                    <button
+                        class="btn waves-effect waves-light btn-large green"
+                        type="submit"
+                        >
+                        Update Profile!
+                        <i class="material-icons right">save</i>
+                    </button>
+                </div>
+            </form>
+           
+        </main>
+        <%- include('./partials/footer.ejs') %>
+        <script src="./js/userfav.js"></script>
+        <script src="./js/logout.js"></script>
+    </body>
+</html>

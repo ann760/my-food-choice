@@ -2,16 +2,16 @@ const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 const bcrypt = require("bcrypt");
 
-// create our User model
-class User extends Model {
+// create our Admin model
+class Admin extends Model {
   // set up method to run on instance data (per user) to check password
   checkPassword(loginPw) {
     return bcrypt.compareSync(loginPw, this.password);
   }
 }
 
-// create fields/columns for User model
-User.init(
+// create fields/columns for Admin model
+Admin.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -19,7 +19,11 @@ User.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    username: {
+    first_name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    last_name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -35,30 +39,32 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [4],
+        len: [8],
       },
     },
   },
   {
     hooks: {
       // set up beforeCreate lifecycle "hook" functionality
-      async beforeCreate(newUserData) {
-        newUserData.password = await bcrypt.hash(newUserData.password, 10);
-        return newUserData;
+      async beforeCreate(newAdminData) {
+        newAdminData.password = await bcrypt.hash(newAdminData.password, 10);
+        return newAdminData;
       },
-      // set up beforeUpdate lifecycle "hook" functionality
-      async beforeUpdate(updatedUserData) {
-        updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
-        return updatedUserData;
-      }
-      
+
+      async beforeUpdate(updatedAdminData) {
+        updatedAdminData.password = await bcrypt.hash(
+          updatedAdminData.password,
+          10
+        );
+        return updatedAdminData;
+      },
     },
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "user",
+    modelName: "admin",
   }
 );
 
-module.exports = User;
+module.exports = Admin;
