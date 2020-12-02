@@ -1,18 +1,21 @@
 {
   "name": "ucb-my-food-choices",
   "version": "1.0.0",
-  "description": "Food choices for the events",
+  "description": "A simple tool for Guests to store their dietary restrictions and food favorites to share with event organizers for any event where food is served.",
   "main": "server.js",
   "scripts": {
     "test": "jest",
-    "start": "node server.js"
+    "start": "node server.js",
+    "devStart": "nodemon server.js",
+    "seeds": "node seeders/index.js",
+    "devSeeds": "nodemon seeders/index.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ahmadelgamal/ucb-my-food-choices.git"
   },
-  "author": "Ann-Marie Orozco, Ahmad El Gamal, Brian Lopez",
-  "license": "ISC",
+  "author": "Aaditi Pai, Ahmad El Gamal, Ann-Marie Orozco & Brian Lopez",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/ahmadelgamal/ucb-my-food-choices/issues"
   },
@@ -21,11 +24,14 @@
     "bcrypt": "^5.0.0",
     "connect-session-sequelize": "^7.0.4",
     "dotenv": "^8.2.0",
+    "ejs": "^3.1.5",
     "express": "^4.17.1",
-    "express-handlebars": "^5.2.0",
     "express-session": "^1.17.1",
-    "jest": "^26.6.1",
     "mysql2": "^2.2.5",
     "sequelize": "^6.3.5"
+  },
+  "devDependencies": {
+    "jest": "^26.6.3",
+    "nodemon": "^2.0.6"
   }
 }
