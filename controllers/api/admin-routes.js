@@ -105,6 +105,39 @@ router.post('/admin-logout', (req, res) => {
   }
 });
 
+/*
+// GET one user /api/users/1
+router.get("/:id", (req, res) => {
+  console.log("=========GET=USER=ID========");
+  User.findOne({
+    attributes: { exclude: ["password"] },
+    where: {
+      id: req.params.id,
+    },
+    include: [
+      {
+        model: Profile,
+        attributes: ["id", "user_id", "restriction_id"],
+        include: {
+          model: Restriction,
+          attributes: ["restriction_name"],
+        },
+      }
+    ],
+  })
+    .then((dbUserData) => {
+      if (!dbUserData) {
+        res.status(404).json({ message: "No user found with this id" });
+        return;
+      }
+      res.json(dbUserData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(303).json(err);
+    });
+});
+*/
 //POST create new user /api/users
 router.post("/", (req, res) => {
   console.log("========CREATE=USER========");
