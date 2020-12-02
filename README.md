@@ -29,7 +29,7 @@ It has an interface for users to enter their dietary choices, and another for ev
 
 ## Deployment URL
 
-https://myfoodchoices.herokuapp.com/
+https://food-67923.herokuapp.com/login
 
 ## GitHub Repo URL
 
