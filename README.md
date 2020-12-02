@@ -1,4 +1,9 @@
 # My Food Choices
+<p align="center">
+    <img src="https://img.shields.io/badge/javascript-yellow" />
+    <img src="https://img.shields.io/badge/express-orange" />
+    <img src="https://img.shields.io/badge/mysql-blue"  />
+  </p>
 
 ## Description
 
